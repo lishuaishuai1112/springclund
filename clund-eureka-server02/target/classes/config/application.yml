@@ -1,0 +1,18 @@
+server:
+  port: 8096
+#eureka配置
+eureka:
+##eureka服务端的实例名称
+  instance:
+    hostname: eureka8096.com
+  client:
+    register-with-eureka: false     #false表示不向注册中心注册自己。
+    fetch-registry: false     #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
+    service-url:
+      #设置与eureka  server交互的地址和注册服务都需要依赖这个地址
+      #defaultZone: http://${eureka.instance}:${server.port}/eureka/  #单机就是指向自己
+#集群指向其他的eureka服务
+      defaultZone: http://eureka8095.com:8095/eureka/  #单机就是指向自己
+#  server:
+#关闭保护模式
+#    enable-self-preservation: false
